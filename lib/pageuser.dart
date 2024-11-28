@@ -11,7 +11,7 @@ class Pageuser extends StatelessWidget {
         backgroundColor: PageColour,
         title: const Center(
           child: Text(
-            'User Profile',
+            'ข้อมูลผู้ใช้',
             style: TextStyle(color: Colors.white),
           ),
         ),

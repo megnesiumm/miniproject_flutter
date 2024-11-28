@@ -15,7 +15,7 @@ class Homepage extends StatelessWidget {
         backgroundColor: PageColour,
         title: const Center(
           child: Text(
-            'HOME',
+            'หน้าหลัก',
             style: TextStyle(color: Colors.white),
           ),
         ),
@@ -39,10 +39,10 @@ class Homepage extends StatelessWidget {
             ];
 
             final toyTexts = [
-              'ที่ตกแมวววว', 
-              'หนูปลอมคั๊บ', 
-              'ตุ๊กตามหาประลัย!', 
-              'อุโมงค์ล่อแมวว' 
+              'ที่ตกแมวววว',
+              'หนูปลอมคั๊บ',
+              'ตุ๊กตามหาประลัย!',
+              'อุโมงค์ล่อแมวว'
             ];
 
             // รายละเอียดที่แตกต่างกันสำหรับแต่ละปุ่ม
@@ -98,8 +98,10 @@ class Homepage extends StatelessWidget {
                     const SizedBox(height: 10.0),
                     Text(
                       toyTexts[index],
-                      style:
-                          const TextStyle(color: Colors.black, fontSize: 18.0,fontWeight: FontWeight.bold),
+                      style: const TextStyle(
+                          color: Colors.black,
+                          fontSize: 18.0,
+                          fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(height: 10.0),
                     // ทำให้ปุ่มยืดหยุ่นโดยใช้ Expanded

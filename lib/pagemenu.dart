@@ -11,7 +11,7 @@ class Pagemenu extends StatelessWidget {
         backgroundColor: PageColour,
         title: const Center(
             child: Text(
-          'MENU',
+          'หมวดหมู่',
           style: TextStyle(color: Colors.white),
         )),
       ),

@@ -1,22 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:miniproject_flutter/constants.dart';
-import 'package:miniproject_flutter/pagecart.dart';
+import 'package:miniproject_flutter/product.dart'; // นำเข้า Product class
+import 'package:miniproject_flutter/pagecart.dart'; // นำเข้า Pagecart
 
 class Toy3 extends StatefulWidget {
   const Toy3({super.key});
 
   @override
-  // ignore: library_private_types_in_public_api
   _Toy1State createState() => _Toy1State();
 }
 
 class _Toy1State extends State<Toy3> {
-  int _quantity = 0; // จำนวนสินค้าเริ่มต้นเป็น 0
-
-  // สร้าง Product สำหรับตะกร้า
+  int _quantity = 0; // ตัวแปรเก็บจำนวนสินค้าที่เพิ่ม
   List<Product> cartItems = [
     Product(
-        name: 'ตุ๊กตามหาประลัย', quantity: 0, price: 1122.0), // สินค้าตัวอย่าง
+        name: 'ตุ๊กตามหาประลัย', quantity: 0, price: 999.0), // สินค้าที่จะเพิ่ม
   ];
 
   @override
@@ -32,13 +30,12 @@ class _Toy1State extends State<Toy3> {
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () {
-            Navigator.pop(context);
+            Navigator.pop(context); // กลับไปหน้าเดิม
           },
         ),
       ),
       body: Stack(
         children: [
-          // เนื้อหาหลักของหน้าจอ
           Column(
             children: [
               const SizedBox(height: 10),
@@ -71,11 +68,10 @@ class _Toy1State extends State<Toy3> {
                             fontWeight: FontWeight.bold),
                       ),
                       const Text(
-                        'ราคา 1,112 บาท',
+                        'ราคา 999 บาท',
                         style: TextStyle(color: PriceColour, fontSize: 16.0),
                       ),
                       const SizedBox(height: 10),
-                      // การปรับเพิ่มลดจำนวนสินค้า
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -113,7 +109,6 @@ class _Toy1State extends State<Toy3> {
               ),
             ],
           ),
-          // ปุ่ม shopping_cart อยู่กลางด้านล่าง
           Positioned(
             bottom: 20.0,
             left: MediaQuery.of(context).size.width / 2 - 30,
@@ -124,14 +119,18 @@ class _Toy1State extends State<Toy3> {
                 padding: const EdgeInsets.all(16),
               ),
               onPressed: () {
-                // ส่งจำนวนสินค้าและรายการสินค้าผ่าน Navigator ไปยัง Pagecart
-                cartItems[0].quantity = _quantity; // อัปเดตจำนวนสินค้า
-                Navigator.push(
+                setState(() {
+                  // อัปเดตจำนวนสินค้าใน cartItems
+                  cartItems[0].quantity = _quantity;
+                  print(cartItems);
+                });
+
+                // ใช้ Navigator.pushReplacement เพื่อไปยังหน้า Pagecart
+                Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
                     builder: (context) => Pagecart(
-                      cartItems: cartItems,
-                      quantity: 0,
+                      cartItems: cartItems, // ส่ง cartItems ไปยัง Pagecart
                     ),
                   ),
                 );

@@ -4,6 +4,7 @@ import 'package:miniproject_flutter/homepage.dart';
 import 'package:miniproject_flutter/pagecart.dart';
 import 'package:miniproject_flutter/pagemenu.dart';
 import 'package:miniproject_flutter/pageuser.dart';
+import 'package:miniproject_flutter/product.dart'; // นำเข้า Product class
 
 void main() {
   runApp(const MyApp());
@@ -30,22 +31,20 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int _currentIndex = 0;
-  final int _quantity = 0; // ตัวแปรจำนวนสินค้าในตะกร้า
+  final List<Product> _cartItems = [];
 
-  // ย้ายการสร้าง _screens ไปใน build() เพื่อให้สามารถเข้าถึง _quantity ได้
+  // หน้าจอที่สามารถเลือกได้
   @override
   Widget build(BuildContext context) {
-    // หน้าจอที่สามารถเลือกได้
-    // ignore: no_leading_underscores_for_local_identifiers
-    final List<Widget> _screens = [
+    final List<Widget> screens = [
       const Homepage(),
       const Pagemenu(),
-      Pagecart(quantity: _quantity, cartItems: const [],), // ส่งค่า _quantity ไปที่ Pagecart
+      Pagecart(cartItems: _cartItems), // ส่ง cartItems ที่อัปเดตไปยัง Pagecart
       const Pageuser(),
     ];
 
     return Scaffold(
-      body: _screens[_currentIndex],
+      body: screens[_currentIndex],
       bottomNavigationBar: Container(
         padding: const EdgeInsets.only(top: 5.0),
         height: 70.0,
@@ -107,5 +106,19 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
     );
+  }
+
+  // ฟังก์ชันที่ใช้เพิ่มสินค้าในตะกร้า
+  void addToCart(Product product) {
+    setState(() {
+      _cartItems.add(product); // เพิ่มสินค้าใหม่ในตะกร้า
+    });
+  }
+
+  // ฟังก์ชันที่ใช้ลบสินค้าออกจากตะกร้า
+  void removeFromCart(Product product) {
+    setState(() {
+      _cartItems.remove(product); // ลบสินค้าออกจากตะกร้า
+    });
   }
 }
