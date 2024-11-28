@@ -21,14 +21,14 @@ class _Toy1State extends State<Toy4> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: PageColour,
         title: const Text(
           'อุโมงค์ล่อแมวว',
-          style: TextStyle(color: Colors.black),
+          style: TextStyle(color: Colors.white),
         ),
         centerTitle: true,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.black),
+          icon: const Icon(Icons.arrow_back, color: Colors.white),
           onPressed: () {
             Navigator.pop(context); // กลับไปหน้าเดิม
           },
@@ -126,7 +126,7 @@ class _Toy1State extends State<Toy4> {
                 });
 
                 // ใช้ Navigator.pushReplacement เพื่อไปยังหน้า Pagecart
-                Navigator.pushReplacement(
+                Navigator.push(
                   context,
                   MaterialPageRoute(
                     builder: (context) => Pagecart(
