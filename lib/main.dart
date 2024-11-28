@@ -108,17 +108,17 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  // ฟังก์ชันที่ใช้เพิ่มสินค้าในตะกร้า
-  void addToCart(Product product) {
-    setState(() {
-      _cartItems.add(product); // เพิ่มสินค้าใหม่ในตะกร้า
-    });
-  }
+  // // ฟังก์ชันที่ใช้เพิ่มสินค้าในตะกร้า
+  // void addToCart(Product product) {
+  //   setState(() {
+  //     _cartItems.add(product); // เพิ่มสินค้าใหม่ในตะกร้า
+  //   });
+  // }
 
-  // ฟังก์ชันที่ใช้ลบสินค้าออกจากตะกร้า
-  void removeFromCart(Product product) {
-    setState(() {
-      _cartItems.remove(product); // ลบสินค้าออกจากตะกร้า
-    });
-  }
+  // // ฟังก์ชันที่ใช้ลบสินค้าออกจากตะกร้า
+  // void removeFromCart(Product product) {
+  //   setState(() {
+  //     _cartItems.remove(product); // ลบสินค้าออกจากตะกร้า
+  //   });
+  // }
 }
