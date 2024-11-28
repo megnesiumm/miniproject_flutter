@@ -7,10 +7,10 @@ class Toy3 extends StatefulWidget {
   const Toy3({super.key});
 
   @override
-  _Toy1State createState() => _Toy1State();
+  _Toy3State createState() => _Toy3State();
 }
 
-class _Toy1State extends State<Toy3> {
+class _Toy3State extends State<Toy3> {
   int _quantity = 0; // ตัวแปรเก็บจำนวนสินค้าที่เพิ่ม
   List<Product> cartItems = [
     Product(
