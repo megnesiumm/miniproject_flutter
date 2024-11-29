@@ -4,10 +4,20 @@ import 'package:miniproject_flutter/homepage.dart';
 import 'package:miniproject_flutter/pagecart.dart';
 import 'package:miniproject_flutter/pagemenu.dart';
 import 'package:miniproject_flutter/pageuser.dart';
-import 'package:miniproject_flutter/product.dart'; // นำเข้า Product class
+import 'package:miniproject_flutter/provider/transaction_provider.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (context) => TransactionProvider(),
+        ),
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -15,9 +25,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomeScreen(), // หน้าหลักคือ HomeScreen
+      home: const HomeScreen(), // หน้าหลักคือ HomeScreen
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: PageColour),
+        useMaterial3: true,
+      ),
     );
   }
 }
@@ -31,15 +45,14 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int _currentIndex = 0;
-  final List<Product> _cartItems = [];
 
-  // หน้าจอที่สามารถเลือกได้
   @override
   Widget build(BuildContext context) {
+    // หน้าจอที่สามารถเลือกได้
     final List<Widget> screens = [
       const Homepage(),
       const Pagemenu(),
-      Pagecart(cartItems: _cartItems), // ส่ง cartItems ที่อัปเดตไปยัง Pagecart
+      const Pagecart(), // ไม่ต้องส่ง `cartItems` เนื่องจากใช้ `Provider`
       const Pageuser(),
     ];
 
@@ -107,18 +120,4 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
   }
-
-  // // ฟังก์ชันที่ใช้เพิ่มสินค้าในตะกร้า
-  // void addToCart(Product product) {
-  //   setState(() {
-  //     _cartItems.add(product); // เพิ่มสินค้าใหม่ในตะกร้า
-  //   });
-  // }
-
-  // // ฟังก์ชันที่ใช้ลบสินค้าออกจากตะกร้า
-  // void removeFromCart(Product product) {
-  //   setState(() {
-  //     _cartItems.remove(product); // ลบสินค้าออกจากตะกร้า
-  //   });
-  // }
 }

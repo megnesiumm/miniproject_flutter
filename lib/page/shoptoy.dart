@@ -4,17 +4,17 @@ import 'package:miniproject_flutter/models/transaction.dart';
 import 'package:miniproject_flutter/provider/transaction_provider.dart';
 import 'package:provider/provider.dart';
 
-class Toy3 extends StatefulWidget {
-  const Toy3({super.key});
+class Shoptoy extends StatefulWidget {
+  const Shoptoy({super.key});
 
   @override
-  _Toy3State createState() => _Toy3State();
+  State<Shoptoy> createState() => _ShoptoyState();
 }
 
-class _Toy3State extends State<Toy3> {
-  final titleController = TextEditingController(text: "ตุ๊กตามหาประลัย");
-  final quantityController = TextEditingController(text: "0");
-  final priceController = TextEditingController(text: "999");
+class _ShoptoyState extends State<Shoptoy> {
+  final titleController = TextEditingController(text: "ที่ตกแมวววว");
+  final quantityyController = TextEditingController(text: "0");
+  final priceController = TextEditingController(text: "1991");
 
   late Transaction transaction;
 
@@ -23,7 +23,7 @@ class _Toy3State extends State<Toy3> {
     super.initState();
     transaction = Transaction(
       title: titleController.text,
-      quantityy: int.parse(quantityController.text),
+      quantityy: int.parse(quantityyController.text),
       price: double.parse(priceController.text),
       date: DateTime.now(),
     );
@@ -35,7 +35,7 @@ class _Toy3State extends State<Toy3> {
       appBar: AppBar(
         backgroundColor: PageColour,
         title: const Text(
-          'ตุ๊กตามหาประลัย',
+          'ที่ตกแมวววว',
           style: TextStyle(color: Colors.white),
         ),
         centerTitle: true,
@@ -67,21 +67,21 @@ class _Toy3State extends State<Toy3> {
                     child: Column(
                       children: <Widget>[
                         Image.asset(
-                          'images/toycat3.png',
+                          'images/toycat1.png',
                           width: double.infinity,
                           height: 220,
                           fit: BoxFit.cover,
                         ),
                         const SizedBox(height: 10),
                         const Text(
-                          'ตุ๊กตามหาประลัย',
+                          'ที่ตกแมวววว',
                           style: TextStyle(
                               color: Colors.black,
                               fontSize: 18.0,
                               fontWeight: FontWeight.bold),
                         ),
                         const Text(
-                          'ราคา 999 บาท',
+                          'ราคา 1,991 บาท',
                           style: TextStyle(color: PriceColour, fontSize: 16.0),
                         ),
                         const SizedBox(height: 10),
@@ -119,7 +119,7 @@ class _Toy3State extends State<Toy3> {
                 const Padding(
                   padding: EdgeInsets.only(top: 20.0),
                   child: Text(
-                    'ตุ๊กตามหาประลัยเป็นของเล่นที่มีการออกแบบให้เหมือนสัตว์ที่แมวสามารถใช้เป็นที่ฝึกการล่าและการหิ้ว ช่วยเสริมพัฒนาการทางการเคลื่อนไหวและการประสานงานของแมว.',
+                    'ไม้ตกแมวเป็นของเล่นแมวที่ควรมีติดบ้านชิ้นหนึ่ง เพราะมีราคาถูก หาซื้อง่าย เป็นของเล่นที่ไม่ว่าแมวตัวไหนก็ต้องพ่ายแพ้ วิธีเล่นก็เพียงแกว่งไม้ตกแมวไป-มา',
                     style: TextStyle(color: Colors.black, fontSize: 14.0),
                     textAlign: TextAlign.center,
                   ),

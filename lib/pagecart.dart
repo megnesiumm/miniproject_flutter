@@ -1,29 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:miniproject_flutter/constants.dart';
-import 'package:miniproject_flutter/product.dart'; // นำเข้า Product class
+import 'package:miniproject_flutter/models/transaction.dart';
+import 'package:miniproject_flutter/provider/transaction_provider.dart';
+import 'package:provider/provider.dart';
 
-class Pagecart extends StatefulWidget {
-  final List<Product> cartItems; // รับข้อมูลจากหน้าอื่นที่ส่งมา
-
-  const Pagecart({super.key, required this.cartItems});
-
-  @override
-  _PagecartState createState() => _PagecartState();
-}
-
-class _PagecartState extends State<Pagecart> {
-  late List<Product> cartItems;
-
-  @override
-  void initState() {
-    super.initState();
-    cartItems = widget.cartItems; // รับค่าจาก widget.cartItems
-    print('Pagecart - CartItems: $cartItems'); // ตรวจสอบค่าที่รับมา
-  }
+class Pagecart extends StatelessWidget {
+  const Pagecart({super.key});
 
   @override
   Widget build(BuildContext context) {
-    print('Pagecart - CartItems in build: $cartItems'); // ตรวจสอบใน build
+    final cartItems = Provider.of<TransactionProvider>(context).transactions;
 
     return Scaffold(
       appBar: AppBar(
@@ -47,10 +33,11 @@ class _PagecartState extends State<Pagecart> {
                         margin: const EdgeInsets.symmetric(
                             vertical: 8, horizontal: 16),
                         child: ListTile(
-                          title: Text(item.name),
+                          title: Text(item.title),
                           subtitle: Text(
-                              'จำนวน: ${item.quantity} ชิ้น - ราคา: ฿${item.price}'),
-                          trailing: Text('฿${item.price * item.quantity}'),
+                              'จำนวน: ${item.quantityy} ชิ้น - ราคา: ฿${item.price}'),
+                          trailing: Text(
+                              '฿${(item.price * item.quantityy).toStringAsFixed(2)}'),
                         ),
                       );
                     },
@@ -59,7 +46,7 @@ class _PagecartState extends State<Pagecart> {
                 Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: Text(
-                    'ยอดรวม: ฿${getTotal().toStringAsFixed(2)}',
+                    'ยอดรวม: ฿${getTotal(cartItems).toStringAsFixed(2)}',
                     style: const TextStyle(
                         fontSize: 24, fontWeight: FontWeight.bold),
                   ),
@@ -70,10 +57,10 @@ class _PagecartState extends State<Pagecart> {
     );
   }
 
-  double getTotal() {
+  double getTotal(List<Transaction> cartItems) {
     double total = 0;
     for (var item in cartItems) {
-      total += item.price * item.quantity;
+      total += item.price * item.quantityy;
     }
     return total;
   }
