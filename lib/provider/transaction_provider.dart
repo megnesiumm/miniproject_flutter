@@ -14,4 +14,8 @@ class TransactionProvider with ChangeNotifier {
     transactions.insert(0, statement);
     notifyListeners();
   }
+  void removeTransaction(Transaction transaction) {
+    transactions.remove(transaction);
+    notifyListeners();
+  }
 }

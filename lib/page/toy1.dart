@@ -127,30 +127,31 @@ class _Toy1State extends State<Toy1> {
               ],
             ),
           ),
-          Positioned(
-            bottom: 20.0,
-            left: MediaQuery.of(context).size.width / 2 - 30,
-            child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.black,
-                shape: const CircleBorder(),
-                padding: const EdgeInsets.all(16),
+       Align(
+            alignment: Alignment.bottomCenter, // จัดตำแหน่งไปที่กลางด้านล่าง
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.black,
+                  shape: const CircleBorder(),
+                  padding: const EdgeInsets.all(16),
+                ),
+                onPressed: () {
+                  var provider =
+                      Provider.of<TransactionProvider>(context, listen: false);
+
+                  // เพิ่มสินค้าในตะกร้า
+                  provider.addTransaction(transaction);
+
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(content: Text("เพิ่มสินค้าในตะกร้าเรียบร้อย")),
+                  );
+                  Navigator.pop(context);
+                },
+                child: const Icon(Icons.shopping_cart,
+                    color: Colors.white, size: 30),
               ),
-              onPressed: () {
-                // ดึง Provider
-                var provider =
-                    Provider.of<TransactionProvider>(context, listen: false);
-
-                // เพิ่มสินค้าในตะกร้า
-                provider.addTransaction(transaction);
-
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text("เพิ่มสินค้าในตะกร้าเรียบร้อย")),
-                );
-                Navigator.pop(context);
-              },
-              child: const Icon(Icons.shopping_cart,
-                  color: Colors.white, size: 30),
             ),
           ),
         ],
