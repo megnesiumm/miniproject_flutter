@@ -128,7 +128,7 @@ class _Toy4State extends State<Toy4> {
             ),
           ),
           Align(
-            alignment: Alignment.bottomCenter, // จัดตำแหน่งไปที่กลางด้านล่าง
+            alignment: Alignment.bottomCenter, 
             child: Padding(
               padding: const EdgeInsets.all(16.0),
               child: ElevatedButton(
@@ -141,7 +141,7 @@ class _Toy4State extends State<Toy4> {
                   var provider =
                       Provider.of<TransactionProvider>(context, listen: false);
 
-                  // เพิ่มสินค้าในตะกร้า
+              
                   provider.addTransaction(transaction);
 
                   ScaffoldMessenger.of(context).showSnackBar(

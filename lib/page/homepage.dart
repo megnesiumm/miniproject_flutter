@@ -10,7 +10,6 @@ class Homepage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // ประกาศลิสต์ของ toyImages, toyTexts, toyDetails ภายในฟังก์ชัน build
     final toyImages = [
       'images/toycat1.png',
       'images/toycat2.png',
@@ -45,13 +44,13 @@ class Homepage extends StatelessWidget {
       body: Center(
         child: GridView.builder(
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2, // แสดง 2 รูปในแต่ละแถว
-            crossAxisSpacing: 10.0, // ระยะห่างระหว่างคอลัมน์
-            mainAxisSpacing: 20.0, // ระยะห่างระหว่างแถว
-            childAspectRatio: 0.75, // ทำให้ขนาดรูปเหมาะสมกับข้อความ
+            crossAxisCount: 2,
+            crossAxisSpacing: 10.0,
+            mainAxisSpacing: 20.0,
+            childAspectRatio: 0.75,
           ),
-          padding: const EdgeInsets.all(10.0), // ขอบรอบๆ
-          itemCount: toyImages.length, // ใช้ความยาวของลิสต์ toyImages
+          padding: const EdgeInsets.all(10.0),
+          itemCount: toyImages.length,
           itemBuilder: (context, index) {
             return Container(
               padding: const EdgeInsets.all(8.0),

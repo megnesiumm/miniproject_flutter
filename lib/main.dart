@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:miniproject_flutter/constants.dart';
-import 'package:miniproject_flutter/homepage.dart';
-import 'package:miniproject_flutter/pagecart.dart';
-import 'package:miniproject_flutter/pagemenu.dart';
-import 'package:miniproject_flutter/pageuser.dart';
+import 'package:miniproject_flutter/page/homepage.dart';
+import 'package:miniproject_flutter/page/login.dart';
+import 'package:miniproject_flutter/page/pagecart.dart';
+import 'package:miniproject_flutter/page/pagemenu.dart';
+import 'package:miniproject_flutter/page/pageuser.dart';
 import 'package:miniproject_flutter/provider/transaction_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -27,7 +28,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const HomeScreen(), // หน้าหลักคือ HomeScreen
+      home: const LoginPage(),
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: PageColour),
         useMaterial3: true,
@@ -48,11 +49,10 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // หน้าจอที่สามารถเลือกได้
     final List<Widget> screens = [
       const Homepage(),
       const Pagemenu(),
-      const Pagecart(), // ไม่ต้องส่ง `cartItems` เนื่องจากใช้ `Provider`
+      const Pagecart(), 
       const Pageuser(),
     ];
 
